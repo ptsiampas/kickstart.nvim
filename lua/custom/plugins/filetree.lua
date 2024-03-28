@@ -9,6 +9,19 @@ return {
     'MunifTanjim/nui.nvim',
   },
   config = function()
-    require('neo-tree').setup {}
+    require('neo-tree').setup {
+      close_if_last_window = true,
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+        },
+        follow_current_file = {
+          enabled = true,
+        },
+      },
+      --- More configurations can be placed here
+    }
+    -- Keymap for toggling the Neo-Tree file explorer
+    vim.api.nvim_set_keymap('n', '<C-n>', ':Neotree toggle<CR>', { noremap = true, silent = true })
   end,
 }
